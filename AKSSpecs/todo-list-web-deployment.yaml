@@ -7,6 +7,8 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: todo-list-web
+    azure.azureauthority.in: todo-list-app
+    app: todo-list
   name: todo-list-web
   namespace: default
 spec:
@@ -40,6 +42,9 @@ spec:
       restartPolicy: Always
       volumes:
         - name: appsettings
-          configMap:
-            name: appsettings
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: todolist-keyvault
 status: {}

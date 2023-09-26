@@ -7,6 +7,8 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: todo-storage
+    azure.azureauthority.in: todo-list-app
+    app: todo-list
   name: todo-storage
   namespace: default
 spec:
